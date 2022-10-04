@@ -436,6 +436,8 @@ body{
 }
 .timeline{
     position: relative;
+    padding: 10px;
+    
 }
 .line{
     width: 100%;
@@ -445,12 +447,13 @@ body{
     position: relative;
 }
 .line-cr{
-    width: 16.66%;
+    width: calc(16.66% - 8.33%);
     height: 4px;
     background-color: var(--orange-primary);
     border-radius: 10px;
     position: absolute;
     left: 0;
+    transition: all 0.25s ease;
 }
 
 .timeline-date{
@@ -462,24 +465,34 @@ body{
     position: absolute;
     cursor: pointer;
     top: -7px;
-    left: 16.66%;
+    /* left: calc(16.66% - 8.33%); */
     z-index: 99;
 }
+.timeline-date::before{
+    content: attr(data-date);
+    position: absolute;
+    top: 20px;
+    right: -10px;
+}
 .timeline-date:nth-child(2){
-    left: 33.32%;
+    left: calc(16.66% - 8.33%);
+    background-color: white;
+    border: 1px solid var(--orange-primary);
 }
 .timeline-date:nth-child(3){
-    left: 49.98%;
+    left: calc(33.32% - 8.33%);
 }
 .timeline-date:nth-child(4){
-    left: 66.64%;
+    left: calc(49.98% - 8.33%);
 }
 .timeline-date:nth-child(5){
-    left: 83.3%;
+    left: calc(66.64% - 8.33%);
 }
 .timeline-date:nth-child(6){
-    /* left: 99.96%; */
-    left: 99%;
+    left: calc(83.3% - 8.33%); 
+}
+.timeline-date:nth-child(7){
+    left: calc(99.96% - 8.33%);
 }
 
 
@@ -498,4 +511,43 @@ body{
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     
+}
+
+.timeline-text{
+    max-width: 550px;
+    width: calc(100% - 20px);
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; */
+    padding: 15px;
+    margin: 45px auto;
+    position: relative;
+}
+.timeline-text p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--light-black);
+    line-height: 25px;
+    transition: all 0.25s ease;
+    
+}
+@keyframes showup {
+    from {
+        opacity: 0;
+        
+    }
+    to {
+        opacity: 1;
+        
+    }
+    
+}
+.timeline-text::after{
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: var(--orange-primary);
+    width: 0.5rem;
+    height: 100%;
+    top: 0;
+    left: -15px;
+    border-radius: 1rem;
 }
